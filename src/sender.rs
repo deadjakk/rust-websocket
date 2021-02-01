@@ -8,6 +8,7 @@ use crate::ws::dataframe::DataFrame;
 use crate::ws::sender::Sender as SenderTrait;
 use std::io::Result as IoResult;
 use std::io::Write;
+use std::time::Duration;
 
 /// A writer that bundles a stream with a serializer to send the messages.
 /// This is used in the client's `.split()` function as the writing component.
@@ -51,6 +52,11 @@ where
 	pub fn shutdown(&self) -> IoResult<()> {
 		self.stream.as_tcp().shutdown(Shutdown::Write)
 	}
+
+    /// Changes the write timeout of the socket
+    pub fn set_write_timeout(&self, duration: Option<Duration>) -> IoResult<()> {
+            self.stream.as_tcp().set_read_timeout(duration)
+    }
 
 	/// Shuts down both Sender and Receiver, will cause all pending and future IO to
 	/// return immediately with an appropriate value.

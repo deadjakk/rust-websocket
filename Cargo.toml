@@ -47,7 +47,7 @@ async = ["bytes", "futures", "tokio-io", "tokio-tcp", "tokio-reactor", "tokio-co
 async-ssl = ["native-tls", "tokio-tls", "async", "websocket-base/async-ssl"]
 nightly = ["hyper/nightly"]
 
-[workspace]
-members = [
-    "websocket-base"
-]
+#[workspace]
+#members = [
+#    "websocket-base"
+#]

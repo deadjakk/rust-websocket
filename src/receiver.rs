@@ -2,6 +2,7 @@
 
 use std::io::Read;
 use std::io::Result as IoResult;
+use std::time::Duration;
 
 use hyper::buffer::BufReader;
 
@@ -61,6 +62,12 @@ where
 	pub fn shutdown(&self) -> IoResult<()> {
 		self.stream.get_ref().as_tcp().shutdown(Shutdown::Read)
 	}
+
+
+    /// Changes the read timeout of the socket
+    pub fn set_read_timeout(&self, duration: Option<Duration>) -> IoResult<()> {
+            self.stream.get_ref().as_tcp().set_read_timeout(duration)
+    }
 
 	/// Shuts down both Sender and Receiver, will cause all pending and future IO to
 	/// return immediately with an appropriate value.

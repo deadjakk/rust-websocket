@@ -5,6 +5,7 @@ use std::io::Result as IoResult;
 use std::io::{Read, Write};
 use std::net::SocketAddr;
 use std::net::TcpStream;
+use std::time::Duration;
 
 use crate::dataframe::DataFrame;
 use crate::header::extensions::Extension;
@@ -103,6 +104,12 @@ where
 	pub fn set_nodelay(&mut self, nodelay: bool) -> IoResult<()> {
 		self.stream.get_ref().as_tcp().set_nodelay(nodelay)
 	}
+     
+    /// Changes the read timeout of the socket
+    pub fn set_read_timeout(&self, duration: Option<Duration>) -> IoResult<()> {
+            self.stream.get_ref().as_tcp().set_read_timeout(duration)
+    }
+
 
 	/// Changes whether the stream is in nonblocking mode.
 	pub fn set_nonblocking(&self, nonblocking: bool) -> IoResult<()> {

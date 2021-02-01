@@ -1,10 +1,8 @@
 Rust-WebSocket [![Build Status](https://travis-ci.com/websockets-rs/rust-websocket.svg?branch=master)](https://travis-ci.com/websockets-rs/rust-websocket) [![docs.rs](https://docs.rs/websocket/badge.svg)](https://docs.rs/websocket)
 ==============
 
-
-|**Note: Maintainership of this project is slugglish. You may want to use [tungstenite](https://crates.io/crates/tungstenite) or [tokio-tungstenite](https://crates.io/crates/tokio-tungstenite) instead.**|
-|----|
-
+## Changes  
+This fork adds socket timeout functionality to the sync sockets.
 
 Rust-WebSocket is a WebSocket ([RFC6455](https://datatracker.ietf.org/doc/rfc6455/)) library written in Rust.
 
